@@ -12,6 +12,7 @@ class StartScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ClipRRect(
+            borderRadius: BorderRadius.circular(30),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
               child: Container(
