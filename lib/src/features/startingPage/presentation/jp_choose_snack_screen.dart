@@ -12,7 +12,32 @@ class ChooseSnackScreen extends StatefulWidget {
 
 class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
   final categories = ["All categories", "Salty", "Sweet", "Delicate"];
-  final products = [];
+  final List<Product> products = [
+    Product(
+      name: "Mogli's Cup",
+      description: "Strawberry ice cream",
+      price: 8.99,
+      likes: 200,
+    ),
+    Product(
+      name: "Balu's Cup",
+      description: "Pistachio ice cream",
+      price: 8.99,
+      likes: 165,
+    ),
+    Product(
+      name: "Smiling David",
+      description: "Ice cone",
+      price: 3.99,
+      likes: 310,
+    ),
+    Product(
+      name: "Kai in a Cone",
+      description: "Ice cone",
+      price: 3.99,
+      likes: 290,
+    ),
+  ];
   int selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
@@ -287,7 +312,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w800
+                                        fontWeight: FontWeight.w800,
                                       ),
                                     ),
                                   ],
@@ -306,6 +331,74 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                         fontWeight: FontWeight.w900,
                       ),
                     ),
+                    SizedBox(
+                      height: 180,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: products.length,
+                        itemBuilder: (context, index) {
+                          final product = products[index];
+                          return Container(
+                            width: 150,
+                            margin: const EdgeInsets.only(right: 12),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withValues(alpha: 0.2),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            padding: const EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  product.name,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  product.description,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const Spacer(),
+                                Text(
+                                  product.price.toStringAsFixed(2),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.pinkAccent,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.favorite,
+                                      size: 16,
+                                      color: Colors.pinkAccent,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Text("${product.likes}"),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -315,4 +408,18 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
       ),
     );
   }
+}
+
+class Product {
+  final String name;
+  final String description;
+  final double price;
+  final int likes;
+
+  Product({
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.likes,
+  });
 }
