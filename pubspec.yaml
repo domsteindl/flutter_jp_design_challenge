@@ -22,3 +22,7 @@ flutter:
     - assets/grafiken/
     - assets/details/
     - assets/backgrounds/
+  fonts:
+    - family: jpIcons
+      fonts:
+        - asset: assets/fonts/MyFlutterApp.ttf
