@@ -25,7 +25,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
       description: "Pistachio ice cream",
       price: 8.99,
       likes: 165,
-      imagePath: "assets/grafiken/ice.cream.png",
+      imagePath: "assets/grafiken/Ice_cream.png",
     ),
     Product(
       name: "Smiling David",
@@ -39,7 +39,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
       description: "Ice cone",
       price: 3.99,
       likes: 290,
-      imagePath: "assets/grafiken/cat_cupcakes_3D.png",
+      imagePath: "assets/grafiken/Icecream_3D.png",
     ),
   ];
   int selectedIndex = 1;
