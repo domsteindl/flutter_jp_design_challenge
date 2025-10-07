@@ -6,9 +6,9 @@ class ProductDetailPage extends StatefulWidget {
   final String name;
   final String imagePath;
   final double price;
-  final int likes;
+   int likes;
 
-  const ProductDetailPage({
+   ProductDetailPage({
     super.key,
     required this.name,
     required this.imagePath,
@@ -23,6 +23,7 @@ class ProductDetailPage extends StatefulWidget {
 class _ProductDetailPageState extends State<ProductDetailPage> {
   int quantity = 1;
   String selectedSize = "M";
+  bool isFavourited = false;
 
   double get sizeMultiplier {
     switch (selectedSize) {
@@ -84,8 +85,17 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    const Icon(Icons.favorite_outline,
-                                        color: Colors.pinkAccent),
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          isFavourited = !isFavourited;
+                                          isFavourited ? widget.likes++ : widget.likes--;
+                                        });
+                                        
+                                      },
+                                      child:  Icon(isFavourited ? Icons.favorite : Icons.favorite_outline,
+                                          color: Colors.pinkAccent),
+                                    ),
                                     const SizedBox(width: 4),
                                     Text(
                                       widget.likes.toString(),
