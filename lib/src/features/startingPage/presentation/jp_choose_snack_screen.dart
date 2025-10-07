@@ -18,24 +18,28 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
       description: "Strawberry ice cream",
       price: 8.99,
       likes: 200,
+      imagePath: "assets/grafiken/cat_cupcakes_3D.png",
     ),
     Product(
       name: "Balu's Cup",
       description: "Pistachio ice cream",
       price: 8.99,
       likes: 165,
+      imagePath: "assets/grafiken/ice.cream.png",
     ),
     Product(
       name: "Smiling David",
       description: "Ice cone",
       price: 3.99,
       likes: 310,
+      imagePath: "assets/grafiken/ice_cream_stick_3D.png",
     ),
     Product(
       name: "Kai in a Cone",
       description: "Ice cone",
       price: 3.99,
       likes: 290,
+      imagePath: "assets/grafiken/cat_cupcakes_3D.png",
     ),
   ];
   int selectedIndex = 1;
@@ -332,35 +336,46 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 180,
+                      height: 270,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: products.length,
                         itemBuilder: (context, index) {
                           final product = products[index];
                           return Container(
-                            width: 150,
-                            margin: const EdgeInsets.only(right: 12),
+                            width: 190,
+                            margin: const EdgeInsets.only(right: 22),
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withValues(alpha: 0.2),
-                                  blurRadius: 6,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
+                              gradient: LinearGradient(
+                                colors: [Color(0xFFBB8DE1), Color(0xFF908CF5)],
+                              ),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             padding: const EdgeInsets.all(12),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      // DetailsScreen
+                                    },
+                                    child: Image.asset(
+                                      product.imagePath,
+                                      width: double.infinity,
+                                      height: 140,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
                                 Text(
                                   product.name,
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.white
                                   ),
                                 ),
                                 const SizedBox(height: 6),
@@ -368,7 +383,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                                   product.description,
                                   style: const TextStyle(
                                     fontSize: 12,
-                                    color: Colors.grey,
+                                    color: Colors.white,
                                   ),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
@@ -415,11 +430,13 @@ class Product {
   final String description;
   final double price;
   final int likes;
+  final String imagePath;
 
   Product({
     required this.name,
     required this.description,
     required this.price,
     required this.likes,
+    required this.imagePath,
   });
 }
