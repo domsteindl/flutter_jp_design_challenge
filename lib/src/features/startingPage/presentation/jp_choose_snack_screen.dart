@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_jp_design_challenge/icons/my_icons.dart';
+import 'package:flutter_jp_design_challenge/src/features/startingPage/presentation/jp_detail_screen.dart';
 
 class ChooseSnackScreen extends StatefulWidget {
   const ChooseSnackScreen({super.key});
@@ -359,7 +360,43 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                                   borderRadius: BorderRadius.circular(20),
                                   child: GestureDetector(
                                     onTap: () {
-                                      // DetailsScreen
+                                      Navigator.of(context).push(
+                                        PageRouteBuilder(
+                                          opaque:
+                                              false, // so the screen behind stays visible
+                                          barrierColor: Colors
+                                              .transparent, // no dim, no blur
+                                          pageBuilder: (_, __, ___) =>
+                                              ProductDetailPage(
+                                                name: products[index].name,
+                                                imagePath:
+                                                    products[index].imagePath,
+                                                price: products[index].price,
+                                                likes: products[index].likes,
+                                              ),
+                                          transitionsBuilder:
+                                              (_, animation, __, child) {
+                                                return SlideTransition(
+                                                  position:
+                                                      Tween<Offset>(
+                                                        begin: const Offset(
+                                                          0,
+                                                          1,
+                                                        ), // starts off-screen at bottom
+                                                        end: Offset
+                                                            .zero, // slides up
+                                                      ).animate(
+                                                        CurvedAnimation(
+                                                          parent: animation,
+                                                          curve: Curves
+                                                              .easeOutCubic,
+                                                        ),
+                                                      ),
+                                                  child: child,
+                                                );
+                                              },
+                                        ),
+                                      );
                                     },
                                     child: Image.asset(
                                       product.imagePath,
@@ -375,7 +412,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white
+                                    color: Colors.white,
                                   ),
                                 ),
                                 const SizedBox(height: 6),
