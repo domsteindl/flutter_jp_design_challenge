@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_jp_design_challenge/icons/my_icons.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final String name;
@@ -113,12 +114,18 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                 textAlign: TextAlign.center,
                               ),
                               const SizedBox(height: 12),
-                              Text(
-                                "\$${(widget.price * sizeMultiplier).toStringAsFixed(2)}",
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(MyIcons.jpCurrency, color: Colors.white, size: 18,),
+                                  Text(
+                                    "${(widget.price * sizeMultiplier).toStringAsFixed(2)}",
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 12),
                               Container(
@@ -257,10 +264,22 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         ),
                       ),
                       onPressed: () {},
-                      child: Text(
-                        "Order Now  •  \$${totalPrice.toStringAsFixed(2)}",
-                        style: const TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          
+                          Text(
+                            "Order Now  • ",
+                            style: const TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.bold),
+                          ),
+                          Icon(MyIcons.jpCurrency, color: Colors.white,),
+                           Text(
+                            "${totalPrice.toStringAsFixed(2)}",
+                            style: const TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
                   ),
