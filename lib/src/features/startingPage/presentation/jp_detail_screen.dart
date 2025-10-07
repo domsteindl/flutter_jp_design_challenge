@@ -84,7 +84,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    const Icon(Icons.favorite,
+                                    const Icon(Icons.favorite_outline,
                                         color: Colors.pinkAccent),
                                     const SizedBox(width: 4),
                                     Text(
@@ -171,7 +171,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                       Row(
                                         children: List.generate(
                                           5,
-                                          (index) => const Icon(Icons.star,
+                                          (_) => const Icon(Icons.star,
                                               color: Colors.yellow, size: 20),
                                         ),
                                       ),
