@@ -6,7 +6,7 @@ class ProductDetailPage extends StatefulWidget {
   final String name;
   final String imagePath;
   final double price;
-   int likes;
+  int likes;
 
    ProductDetailPage({
     super.key,

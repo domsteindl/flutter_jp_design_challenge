@@ -336,8 +336,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                         fontWeight: FontWeight.w900,
                       ),
                     ),
-                    SizedBox(
-                      height: 270,
+                    Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: products.length,
@@ -401,7 +400,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                                     child: Image.asset(
                                       product.imagePath,
                                       width: double.infinity,
-                                      height: 140,
+                                      height: 135,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -425,7 +424,7 @@ class _ChooseSnackScreenState extends State<ChooseSnackScreen> {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                const Spacer(),
+                             
                                 Text(
                                   product.price.toStringAsFixed(2),
                                   style: const TextStyle(
